@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-@1c31_39bwvmc0phey4!1d#)=j8zr62f4r807q&r=xk%6cyiiq"
+SECRET_KEY = "django-insecure-3*!-)e@38wejl%l29wtjypf3m8zu4sv*k4osn0wv$@mxxg6b_x"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "dashboard.apps.DashboardConfig",
+    "customer.apps.CustomerConfig",
+    "staff",
+    "owner",
+    "user.apps.UserConfig",
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -109,10 +113,21 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+STATTICFILRS_DIRS = [
+    BASE_DIR / "static"
+]
+
 
 STATIC_URL = "static/"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = 'dashbaord-index'
+
+LOGIN_URL = 'user-login'
