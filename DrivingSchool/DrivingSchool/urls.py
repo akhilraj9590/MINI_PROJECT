@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from user import views as user_view
 from django.contrib.auth import views as auth_view
+from user import views
 
 
 urlpatterns = [
@@ -24,7 +25,8 @@ urlpatterns = [
     path('logout/',auth_view.LogoutView.as_view(template_name='user/logout.html'),name='user-logout'),
     path("admin/", admin.site.urls),
     path('register/',user_view.register , name="user-register"),
-    path('', include('customer.urls')),
-    path('', include('staff.urls')),
-    path('', include('owner.urls')),
+    path('customer/', include('customer.urls')),
+    path('staff/', include('staff.urls')),
+    path('owner/', include('owner.urls')),
+    path('dashboard/',views.dashboard,name="dashbaord-index"),
 ]
