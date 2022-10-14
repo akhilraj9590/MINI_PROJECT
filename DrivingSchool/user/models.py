@@ -25,6 +25,11 @@ def create_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 
+class ServicesNameAndPrice(models.Model):
+    ServiceName = models.CharField(max_length=100,null=True)
+    amount = models.PositiveBigIntegerField(null=True)
+    def __str__(self):
+        return f'{self.ServiceName}-{self.amount}'
 
 
 

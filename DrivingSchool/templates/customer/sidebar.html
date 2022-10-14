@@ -1,89 +1,97 @@
- <!-- offcanvas -->
- <div
- class="offcanvas offcanvas-start sidebar-nav bg-dark border-top border-bottom border-light pt-4"
- tabindex="-1"
- id="sidebar"
+<!-- offcanvas -->
+{% block sidebar %}{% endblock %}
+<div
+  class="offcanvas offcanvas-start sidebar-nav bg-dark border-top border-bottom border-light pt-4"
+  tabindex="-1"
+  id="sidebar"
 >
- <div class="offcanvas-body p-0">
-   <nav class="navbar-dark">
-     <ul class="navbar-nav">
-       <li>
-         <div class="text-info small fw-bold text-uppercase px-3">
-           Learn Driving 
-         </div>
-       </li>
-       <li>
-         <a href="DrivingRegestration.html" class="nav-link px-3">
-           <span class="me-2"></span>
-           <span>Driving Admission</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="me-2"></span>
-           <span>Schedules</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="me-2"></span>
-           <span>Attendens</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="me-2"></span>
-           <span>Payment History</span>
-         </a>
-       </li>
-       <li class="my-1"><hr class="dropdown-divider bg-light" /></li>
-       <li>
-         <div class="text-info small fw-bold text-uppercase px-3 mb-3">
-           Services
-         </div>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="me-2"></span>
-           <span>Apply New licence</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="me-2"></span>
-           <span>Apply Badge</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="me-2"></span>
-           <span>licence modicication</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="me-2"></span>
-           <span>RC modicication</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span></span>
-           <span class="p-2">Appointment dates</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="p-2">Applied Status</span>
-         </a>
-       </li>
-       <li>
-         <a href="#" class="nav-link px-3">
-           <span class="p-2">Payment history</span>
-         </a>
-       </li>
-     </ul>
-   </nav>
- </div>
+  <div class="offcanvas-body p-0">
+    <nav class="navbar-dark">
+      <ul class="navbar-nav">
+        <li>
+          <div class="text-info small fw-bold text-uppercase px-3">
+            Learn Driving 
+          </div>
+        </li>
+        <li>
+          <a href="{% url 'customer-admission' %}" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-book-fill"></i></span>
+            <span>Apply for Learn Driving</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-calendar-event"></i></span>
+            <span>Schedules</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2"><i class="bi bi-calendar3"></i></span>
+            <span>Attendens</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2"></span>
+            <span>Payment History</span>
+          </a>
+        </li>
+        <li class="my-1"><hr class="dropdown-divider bg-light" /></li>
+        <li>
+          <div class="text-info small fw-bold text-uppercase px-3 mb-3">
+            Services
+          </div>
+        </li>
+        <li>
+          <a href="{% url 'customer-applyNewLicence' %}" class="nav-link px-3">
+            <span class="me-2"></span>
+            <span>Apply New licence</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2"></span>
+            <span>Apply Badge</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2"></span>
+            <span>licence modicication</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2"></span>
+            <span>RC modicication</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'customer-appliedService' %}" class="nav-link px-3">
+            <span>Applied Status</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span>Payment history</span>
+          </a>
+        </li>
+        <li class="my-1"><hr class="dropdown-divider bg-light" /></li>
+        <li>
+          <div class="text-info small fw-bold text-uppercase px-3 mb-3">
+            Reports
+          </div>
+        </li>
+        <li>
+          <a href="#" class="nav-link px-3">
+            <span class="me-2"></span>
+            <span>Total payment</span>
+          </a>
+        </li>
+       
+      </ul>
+    </nav>
+  </div>
 </div>
 <!-- offcanvas -->

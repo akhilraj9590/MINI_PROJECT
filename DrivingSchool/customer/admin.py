@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import CustomerDetails , DrivingApplication , SavedLicence , ServiceApplication ,schedule ,Payment
 
 # Register your models here.
+admin.site.register(CustomerDetails)
+admin.site.register(DrivingApplication)
+admin.site.register(SavedLicence)
+admin.site.register(ServiceApplication)
+admin.site.register(schedule)
+admin.site.register(Payment)

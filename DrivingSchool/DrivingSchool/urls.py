@@ -18,6 +18,9 @@ from django.urls import path,include
 from user import views as user_view
 from django.contrib.auth import views as auth_view
 from user import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -29,4 +32,4 @@ urlpatterns = [
     path('staff/', include('staff.urls')),
     path('owner/', include('owner.urls')),
     path('dashboard/',views.dashboard,name="dashbaord-index"),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

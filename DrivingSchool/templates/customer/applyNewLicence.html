@@ -1,0 +1,17 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Apply new Service{% endblock %}
+{% block sidebar %}
+{% include 'customer/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="border bg-white p-3">
+    <h4>Apply new licence</h4>
+    <hr>
+    <form method="POST">
+      {% csrf_token %}
+       {{ form|crispy }}
+      <input class="btn btn-success btn-block" type="submit" value="Apply">
+    </form>
+  </div>
+{% endblock %}
