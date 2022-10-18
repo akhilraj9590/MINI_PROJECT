@@ -1,0 +1,37 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Driving adminssion{% endblock %}
+{% block sidebar %}
+{% include 'customer/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="card-body">
+    <div class="table-responsive">
+      <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Branch</th>
+          <th>Applied service</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+        <tbody>
+            {% for each in services %}
+            <tr>
+            <td>{{each.CustomerId}}</td>
+            <td>{{each.BranchId}}</td>
+            <td>{{each.ServiceName.ServiceName}}</td>
+            <td>{{each.ServiceName.amount}}</td>
+            <td class="btn btn-info">{{each.Status}}</td>
+          </tr>
+            {% endfor %} 
+      </table>
+    </div>
+  </div>
+{% endblock %}

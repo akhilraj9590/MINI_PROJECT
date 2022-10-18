@@ -16,6 +16,7 @@ class Profile(models.Model):
     is_customer = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_owner = models.BooleanField(default=False)
+    staffBranch = models.ForeignKey(Branch, on_delete=models.CASCADE, null=True,blank =True)
 
     def __str__(self):
         return f'{self.user.username}'

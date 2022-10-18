@@ -5,13 +5,21 @@
 {% include 'customer/sidebar.html' %}
 {% endblock %}
 {% block content %}
-<div class="border bg-white p-3">
-    <h4>Apply new licence</h4>
-    <hr>
-    <form method="POST">
-      {% csrf_token %}
-       {{ form|crispy }}
-      <input class="btn btn-success btn-block" type="submit" value="Apply">
-    </form>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-md-6 ">
+         <div class="border bg-white p-3 offset-md-3">
+              <h3>Driving Registration</h3>
+              <hr>
+              <form method="POST">
+                  {% csrf_token %}
+                  {{ form | crispy }}
+                  <hr>
+              <input class="btn btn-success" type="submit" value="Register">
+              </form>
+              <hr>
+         </div> 
+      </div>
   </div>
+</div>
 {% endblock %}
