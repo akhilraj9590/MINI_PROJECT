@@ -1,0 +1,34 @@
+{% extends 'partials/base.html' %}
+{% block title %}Student details{% endblock %}
+{% block sidebar %}
+{% include 'staff/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="card-body">
+    <div class="table-responsive">
+      <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+        <tbody>
+            {% for each in students %}
+            <tr>
+            <td>{{each.firstName}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+            {% endfor %} 
+      </table>
+    </div>
+  </div>
+{% endblock %}

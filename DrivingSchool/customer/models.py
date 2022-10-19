@@ -1,6 +1,6 @@
 from distutils.command.upload import upload
 from django.db import models
-from user.models import Branch,ServicesNameAndPrice
+from user.models import Branch,ServicesNameAndPrice,studyLicenceNameAndPrice
 from user.models import *
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -14,7 +14,8 @@ MaleOrFemale = (
     
 class CustomerDetails(models.Model):
     CustomerId = models.ForeignKey(User,on_delete=models.CASCADE)
-    BranchId =  models.ForeignKey(Branch, on_delete=models.CASCADE)    
+    BranchId =  models.ForeignKey(Branch, on_delete=models.CASCADE)  
+    DrivingPackage = models.ForeignKey(studyLicenceNameAndPrice,on_delete=models.CASCADE, null=True, db_constraint=False)  
     FirstName = models.CharField(max_length=100,null=True)
     LastName = models.CharField(max_length=100,null=True)
     DateOfBirth = models.DateField(null=True)

@@ -2,9 +2,10 @@
 {% load crispy_forms_tags %}
 {% block title %}Driving adminssion{% endblock %}
 {% block sidebar %}
-{% include 'customer/sidebar.html' %}
+{% include 'staff/sidebar.html' %}
 {% endblock %}
 {% block content %}
+{{branch.staffBranch}}
 <div class="card-body">
     <div class="table-responsive">
       <table
@@ -22,13 +23,14 @@
         </tr>
       </thead>
         <tbody>
-            {% for each in services %}
+          
+            {% for service in services %}
             <tr>
-            <td>{{each.CustomerId}}</td>
-            <td>{{each.BranchId}}</td>
-            <td>{{each.ServiceName.ServiceName}}</td>
-            <td>{{each.ServiceName.amount}}</td>
-            <td class="btn btn-info">{{each.Status}}</td>
+            <td>{{service.CustomerId}}</td>
+            <td>{{service.BranchId}}</td>
+            <td>{{service.ServiceName.ServiceName}}</td>
+            <td>{{service.ServiceName.amount}}</td>
+            <td class="btn btn-info">{{service.Status}}</td>
           </tr>
             {% endfor %} 
       </table>

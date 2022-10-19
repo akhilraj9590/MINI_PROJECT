@@ -32,6 +32,12 @@ class ServicesNameAndPrice(models.Model):
     def __str__(self):
         return f'{self.ServiceName}-{self.amount}'
 
+class studyLicenceNameAndPrice(models.Model):
+    LicenceType = models.CharField(max_length=100,null=True)
+    amount = models.PositiveBigIntegerField(null=True)
+    def __str__(self):
+        return f'{self.LicenceType}---Rs:{self.amount}'
+
 
 
 

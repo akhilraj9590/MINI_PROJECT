@@ -16,12 +16,13 @@ def index(request):
 
 @login_required
 def admission(request):
+    c1=request.user.id
     if request.method == 'POST':
-        form = Resistrationform(request.POST)
+        form = Resistrationform(request.POST,initial={'CustomerId': c1})
         if form.is_valid():
             form.save()
     else:
-        form = Resistrationform()
+        form = Resistrationform(initial={'CustomerId': c1})
     context = {
         "form" : form
     }
@@ -35,12 +36,13 @@ def selectBranch(request):
     return render(request,'customer/selectBranch.html',context)
 
 def applyNewLicence(request):
+    c1=request.user.id
     if request.method == 'POST':
-        form = ApplyNewLicenceform(request.POST,use_required_attribute=False)
+        form = ApplyNewLicenceform(request.POST,use_required_attribute=False,initial={'CustomerId': c1})
         if form.is_valid():
             form.save()
     else:
-        form = ApplyNewLicenceform()
+        form = ApplyNewLicenceform(initial={'CustomerId': c1})
     context = {
         "form" : form
     }
