@@ -14,18 +14,24 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>Branch</th>
+          <th>Package</th>
+          <th>Gender</th>
+          <th>Phone</th>
+          <th>Applied Date-Time</th>
         </tr>
       </thead>
         <tbody>
             {% for each in students %}
             <tr>
-            <td>{{each.firstName}}</td>
-            <td></td>
-            <td></td>
+            <td>{{each}}</td>
+            <td>{{each.BranchId}}</td>
+            <td>{{each.DrivingPackage.LicenceType}}</td>
+            <td>{{each.Gender}}</td>
+            <td>{{each.Phone1}},
+              {{each.Phone2}}
+            </td>
+            <td>{{each.CreatedDate}}  ({{each.CreatedTime}})</td>
           </tr>
             {% endfor %} 
       </table>

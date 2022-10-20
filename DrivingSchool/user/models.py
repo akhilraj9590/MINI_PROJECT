@@ -6,6 +6,12 @@ from django.db.models.signals import post_save
 
 
 # Create your models here.
+MaleOrFemale = (
+    ( 'male' , 'male'),
+    ( 'female','female' )
+)
+
+
 class Branch(models.Model):
     BranchName =  models.CharField(max_length=100,null=True)
     def __str__(self):
@@ -37,6 +43,17 @@ class studyLicenceNameAndPrice(models.Model):
     amount = models.PositiveBigIntegerField(null=True)
     def __str__(self):
         return f'{self.LicenceType}---Rs:{self.amount}'
+
+
+class Instructor(models.Model):
+    Name = models.CharField(max_length=100,null=True)
+    Branch =models.ForeignKey(Branch, on_delete=models.CASCADE, null=True,blank =True)
+    Age = models.PositiveBigIntegerField(null=True)
+    Gender = models.CharField(max_length=100,null=True,choices=MaleOrFemale)
+    Experience = models.CharField(max_length=100,null=True)
+    def __str__(self):
+        return f'{self.Name}'
+
 
 
 

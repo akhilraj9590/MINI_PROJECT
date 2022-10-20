@@ -24,8 +24,10 @@ def AppliedServices(request):
 
 @login_required
 def studentDetails(request):
-    # students = CustomerDetails.objects.all()
-    # context = {
-    #     'students' : students , 
-    # }
+    s1 = request.user
+    br = Profile.objects.get(user_id=s1).staffBranch_id
+    students = CustomerDetails.objects.filter(BranchId=br)
+    context = {
+        'students' : students , 
+    }
     return render (request,'staff/studentDetails.html',context)

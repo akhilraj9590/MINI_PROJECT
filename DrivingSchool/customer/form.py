@@ -14,6 +14,9 @@ class ApplyNewLicenceform(forms.ModelForm):
         model = ServiceApplication
         fields = ['CustomerId','BranchId','ServiceName','SSLC','IdProof','Photo','PhysicalFitness','AgeProof']
 
+        # Widget {
+        #     CustomerId : 
+        # }
         # def __init__(self, *args, **kwargs):
         #     self.request = kwargs.pop("request")
         #     super(ApplyNewLicenceform, self).__init__(*args, **kwargs)

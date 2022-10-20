@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import date
 
+
 MaleOrFemale = (
     ( 'male' , 'male'),
     ( 'female','female' )
@@ -22,7 +23,8 @@ class CustomerDetails(models.Model):
     Gender = models.CharField(max_length=20,choices=MaleOrFemale,null=True)
     Phone1 = models.CharField(max_length=100,null=True)
     Phone2 = models.CharField(max_length=100,null=True)
-
+    CreatedTime = models.TimeField(default=timezone.now)
+    CreatedDate = models.DateField(default=date.today )
     def __str__(self):
         return f'{self.FirstName} {self.LastName}'
 
@@ -62,6 +64,8 @@ class ServiceApplication(models.Model):
     SchoolCirtifict = models.ImageField(upload_to = "SchoolCirtifict",null = True,blank=True)
     DrivingLicenseOld = models.ImageField(upload_to = "DrivinLicenseOld",null = True,blank=True)
     Status = models.CharField(max_length=100,null = True,default="Pending") #set default value later
+    def __str__(self):
+        return f'{self.CustomerId}-{self.ServiceName}'
 
 class schedule(models.Model):
     UserId = models.ForeignKey(User, on_delete=models.CASCADE, null = True, db_constraint=False)

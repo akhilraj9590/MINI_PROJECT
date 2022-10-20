@@ -19,7 +19,9 @@
           <th>Branch</th>
           <th>Applied service</th>
           <th>Amount</th>
+          <th>View Documents</th>
           <th>Status</th>
+          <th></th>
         </tr>
       </thead>
         <tbody>
@@ -30,7 +32,9 @@
             <td>{{service.BranchId}}</td>
             <td>{{service.ServiceName.ServiceName}}</td>
             <td>{{service.ServiceName.amount}}</td>
-            <td class="btn btn-info">{{service.Status}}</td>
+            <td><a href="">View</a></td>
+            <td ><i class="btn btn-danger">{{service.Status}}</i></td>
+            <td><a class="btn btn-primary" href="">Edit</a></td>
           </tr>
             {% endfor %} 
       </table>
