@@ -4,15 +4,17 @@
 {% include 'owner/sidebar.html' %}
 {% endblock %}
 {% block content %}
+<a href="{% url 'owner-addInstructor' %}" class="btn btn-secondary p-2 m-3">+ Add Instructor</a>
 <div class="card-body">
     <div class="table-responsive">
       <table
         id="example"
-        class="table table-striped data-table"
+        class="table table-striped table-hover data-table "
         style="width: 100%"
       >
-<thead>
-    <tr>
+<thead >
+    <tr class="table-dark">
+      <th >No</th>
       <th>Instructor Name</th>
       <th>Branch</th>
       <th>Age</th>
@@ -21,9 +23,9 @@
     </tr>
   </thead>
     <tbody>
-      
         {% for each in instructor1 %}
         <tr>
+        <td>{{forloop.counter}}</td>
         <td>{{each.Name}}</td>
         <td>{{each.Branch}}</td>
         <td>{{each.Age}}</td>

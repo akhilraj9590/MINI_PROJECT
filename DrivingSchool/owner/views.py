@@ -1,11 +1,13 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from user.models import Profile ,studyLicenceNameAndPrice , Instructor
 from customer.models import CustomerDetails, ServiceApplication
+from .form import addInstructors
+from customer.form import Resistrationform
 
 
 # Create your views here.
@@ -45,3 +47,17 @@ def instructor(request):
         'instructor1':instructor1,
     }
     return render (request,'owner/instructor.html',context)
+
+@login_required
+def addInstructor(request):
+    if request.method == 'POST':
+        form = addInstructors(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect (instructor)
+    else:
+        form = addInstructors()
+    context = {
+        "form" : form
+    }
+    return render(request,'owner/addInstructor.html',context)

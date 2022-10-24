@@ -32,4 +32,7 @@ urlpatterns = [
     path('staff/', include('staff.urls')),
     path('owner/', include('owner.urls')),
     path('dashboard/',views.dashboard,name="dashbaord-index"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

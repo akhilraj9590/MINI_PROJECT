@@ -4,15 +4,17 @@
 {% include 'owner/sidebar.html' %}
 {% endblock %}
 {% block content %}
+<a href="#" class="btn btn-secondary p-2 m-3">+ Add Staff</a>
 <div class="card-body">
     <div class="table-responsive">
       <table
         id="example"
-        class="table table-striped data-table"
+        class="table table-striped table-hover data-table"
         style="width: 100%"
       >
-<thead>
+<thead class="table-dark">
     <tr>
+      <th>No</th>
       <th>Staff Name</th>
       <th>Email</th>
       <th>Branch Name</th>
@@ -22,9 +24,10 @@
       
         {% for each in staff1 %}
         <tr>
+          <td>{{forloop.counter}}</td>
         <td>{{each.user}}</td>
         <td>{{each.user.email}}</td>
-        <td>{{each.staffBranch}}</td>
+        <td class="font-weight-bold">{{each.staffBranch}}</td>
       </tr>
         {% endfor %} 
   </table>

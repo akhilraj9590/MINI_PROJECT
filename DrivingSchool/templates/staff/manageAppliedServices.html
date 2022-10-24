@@ -1,12 +1,13 @@
 {% extends 'partials/base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Driving adminssion{% endblock %}
+{% block title %}Manage Applied Services{% endblock %}
 {% block branch %}(Br:{{brName}}){% endblock %}
+
 {% block sidebar %}
 {% include 'staff/sidebar.html' %}
 {% endblock %}
 {% block content %}
-<!-- {{branch.staffBranch}} -->
+{{branch.staffBranch}}
 <div class="card-body">
     <div class="table-responsive">
       <table
@@ -17,10 +18,10 @@
       <thead class="table-dark">
         <tr>
           <th>Name</th>
-          <th>Branch</th>
           <th>Applied service</th>
-          <th>Amount</th>
+          <th>View Documents</th>
           <th>Status</th>
+          <th></th>
         </tr>
       </thead>
         <tbody>
@@ -28,10 +29,10 @@
             {% for service in services %}
             <tr>
             <td>{{service.CustomerId}}</td>
-            <td>{{service.BranchId}}</td>
             <td>{{service.ServiceName.ServiceName}}</td>
-            <td>{{service.ServiceName.amount}}</td>
+            <td><a class="btn btn-secondary" href="">View</a></td>
             <td ><i class="btn btn-danger">{{service.Status}}</i></td>
+            <td><a class="btn btn-primary" href="{% url 'staff-update_services' service.id %}">Edit</a></td>
           </tr>
             {% endfor %} 
       </table>

@@ -1,5 +1,19 @@
 {% extends 'partials/base.html' %}
+{% load static %}
 {% block title %}staff index{% endblock %}
+{% block branch %}(Br:{{brName}}){% endblock %}
 {% block sidebar %}
 {% include 'staff/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-10 ">
+            <i class="text-center text-primary"><h1>Welcome to Home</h1></i>
+           <div class=" p-3 offset-md-3">
+            <img src="{% static 'images/ss.jpg' %}" alt="">
+
+        </div>
+    </div>
+</div>
 {% endblock %}
