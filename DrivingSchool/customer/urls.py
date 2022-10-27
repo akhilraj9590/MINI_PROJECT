@@ -8,4 +8,5 @@ urlpatterns = [
     path('selectBranch/',views.selectBranch,name="customer-selectBranch"),
     path('applyNewLicence/',views.applyNewLicence,name='customer-applyNewLicence'),
     path('appliedService',views.appliedService,name='customer-appliedService'),
+    path('DrivingPaymentHistory',views.DrivingPaymentHistory,name='customer-DriningPaymentHistory'),
 ]

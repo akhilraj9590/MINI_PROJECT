@@ -19,6 +19,7 @@ class CustomerDetails(models.Model):
     DrivingPackage = models.ForeignKey(studyLicenceNameAndPrice,on_delete=models.CASCADE, null=True, db_constraint=False)  
     FirstName = models.CharField(max_length=100,null=True)
     LastName = models.CharField(max_length=100,null=True)
+    address = models.CharField(max_length=250,null=True)
     DateOfBirth = models.DateField(null=True)
     Gender = models.CharField(max_length=20,choices=MaleOrFemale,null=True)
     Phone1 = models.CharField(max_length=100,null=True)
@@ -81,6 +82,11 @@ class Payment(models.Model):
     amount = models.PositiveBigIntegerField(null=True)
     time = models.TimeField(default=timezone.now)
     Date = models.DateField(default=date.today )
+    discription = models.CharField(max_length =200,null=True)
+    driveRelated = models.BooleanField(null=True,default=False)
+    def __str__(self):
+        return f'{self.CustomerId}-Rs:{self.amount}-(Date : {self.Date}) '
+        #need dervice name
 
 
 

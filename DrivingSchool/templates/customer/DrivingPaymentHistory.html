@@ -1,0 +1,39 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Payment history{% endblock %}
+{% block sidebar %}
+{% include 'customer/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="card-body">
+    <div class="table-responsive">
+      <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+      <thead class="table-dark">
+        <tr>
+          <th>No</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Amount</th>
+          <th>Branch</th>
+          <th>Discription</th>
+        </tr>
+      </thead>
+        <tbody>
+            {% for each in payments1 %}
+            <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{each.Date}}</td>
+            <td>{{each.time}}</td>
+            <td>Rs: <b>{{each.amount}}</b></td>
+            <td >{{each.BranchId}}</td>
+            <td>{{each.discription}}</td>
+          </tr>
+            {% endfor %} 
+      </table>
+    </div>
+  </div>
+{% endblock %}

@@ -32,7 +32,7 @@
             <td>{{service.ServiceName.ServiceName}}</td>
             <td><a class="btn btn-secondary" href="">View</a></td>
             <td ><i class="btn btn-danger">{{service.Status}}</i></td>
-            <td><a class="btn btn-primary" href="{% url 'staff-update_services' service.id %}">Edit</a></td>
+            <td><a class="btn btn-primary" href="{% url 'staff-update_services' service.id %}">update status</a></td>
           </tr>
             {% endfor %} 
       </table>

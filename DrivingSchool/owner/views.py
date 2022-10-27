@@ -8,6 +8,9 @@ from user.models import Profile ,studyLicenceNameAndPrice , Instructor
 from customer.models import CustomerDetails, ServiceApplication
 from .form import addInstructors
 from customer.form import Resistrationform
+from django.contrib.auth.forms import UserCreationForm
+from user.models import Branch
+
 
 
 # Create your views here.
@@ -61,3 +64,29 @@ def addInstructor(request):
         "form" : form
     }
     return render(request,'owner/addInstructor.html',context)
+
+@login_required
+def addStaff(request):
+    branchName = Branch.objects.all()
+    if request.method == 'POST':
+        branch1 = request.POST.get('stfBranch')
+        branchid1 = Branch.objects.get(BranchName=branch1).id
+        print("fg",branchid1)
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+            user1 =User.objects.get(username=form.data['username']).id
+            profilupdate = Profile.objects.get(user=user1)
+            profilupdate.is_customer = False
+            profilupdate.is_staff=True
+            profilupdate.staffBranch_id=branchid1
+            profilupdate.save()
+            # return redirect (instructor)
+    else:
+        form = UserCreationForm()
+    context = {
+        "form" : form,
+        "branchName":branchName,
+    }
+    return render(request,'owner/addStaff.html',context)

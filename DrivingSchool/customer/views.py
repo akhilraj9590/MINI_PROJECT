@@ -4,8 +4,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .form import ApplyNewLicenceform, Resistrationform ,ServiceApplication
-from user.models import Branch
+from .form import ApplyNewLicenceform, Resistrationform ,ServiceApplication 
+from user.models import Branch 
+from .models import Payment
 
 
 
@@ -54,3 +55,12 @@ def appliedService(request):
         'services' : services,
     }
     return render(request,'customer/appliedService.html',context)
+
+def DrivingPaymentHistory(request):
+    c1 = request.user
+    payments1 = Payment.objects.filter(CustomerId=c1,driveRelated=True)
+    print(payments1)
+    context = {
+        'payments1':payments1,
+    }
+    return render(request,'customer/DrivingPaymentHistory.html',context)

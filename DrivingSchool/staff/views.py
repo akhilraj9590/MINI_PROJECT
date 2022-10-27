@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from user.models import Profile 
 from customer.models import *
-from .forms import AppliedServices
+from .forms import AppliedServicesform
 
 # Create your views here.
 @login_required
@@ -65,11 +65,13 @@ def update_services(request, pk):
     brName = Profile.objects.get(user=request.user).staffBranch
 
     if request.method == 'POST' :
-        form = AppliedServices(request.POST)
-        service1.Status = 'hai'
+        form = AppliedServicesform(request.POST,initial={'Status':service1.Status })
+        print('sdf',form)
+        service1.Status=form.data['Status']
         service1.save()
+        return redirect("staff-ManageAppliedServices")
     else:
-        form = AppliedServices
+        form = AppliedServicesform(initial={'Status':service1.Status })
 
     context = {
         'service1' : service1 ,

@@ -7,7 +7,7 @@ from .models import CustomerDetails ,ServiceApplication,User
 class Resistrationform(forms.ModelForm):
     class Meta:
         model = CustomerDetails
-        fields = ['CustomerId','BranchId','DrivingPackage','FirstName' , 'LastName','Gender','Phone1','Phone2','BranchId']
+        fields = ['CustomerId','BranchId','DrivingPackage','FirstName' , 'LastName','Gender','address','Phone1','Phone2','BranchId']
 
 class ApplyNewLicenceform(forms.ModelForm):
     class Meta:

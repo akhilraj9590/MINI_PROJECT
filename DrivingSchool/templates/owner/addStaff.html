@@ -1,0 +1,34 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Add Staf{% endblock %}
+{% block sidebar %}
+{% include 'owner/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="container">
+  <a href="{% url 'owner-staffDetails' %}" class="btn btn-secondary">< Back</a>
+  <div class="row mt-5">
+      <div class="col-md-6 ">
+         <div class="border bg-white p-3 offset-md-3">
+              <h3>Add Staff</h3>
+              <hr>
+              <form method="POST">
+                  {% csrf_token %}
+                  {{ form | crispy }} 
+                  <hr>
+                 Select Branch  <br>
+                  <select name="stfBranch">
+                    {% for each in branchName %}
+                    <option>{{each.BranchName}}</option>
+                    {% endfor %}
+                  </select>
+                  <hr>
+              <input class="btn btn-success" type="submit" value="Add Staff">
+              </form>
+              <hr>
+         </div> 
+      </div>
+  </div>
+</div>
+
+{% endblock %}
