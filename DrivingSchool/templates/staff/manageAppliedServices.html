@@ -10,6 +10,7 @@
 {{branch.staffBranch}}
 <div class="card-body">
     <div class="table-responsive">
+     <h4> Pending Services</h4>
       <table
         id="example"
         class="table table-striped data-table"
@@ -21,21 +22,59 @@
           <th>Applied service</th>
           <th>View Documents</th>
           <th>Status</th>
+          <th>Date-time</th>
           <th></th>
         </tr>
       </thead>
         <tbody>
           
             {% for service in services %}
+            {% if service.Status != comp1.Status  %}
             <tr>
             <td>{{service.CustomerId}}</td>
             <td>{{service.ServiceName.ServiceName}}</td>
-            <td><a class="btn btn-secondary" href="">View</a></td>
+            <td><a class="btn btn-secondary" href="{% url 'staff-viewDocuments' service.id %}">View</a></td>
             <td ><i class="btn btn-danger">{{service.Status}}</i></td>
-            <td><a class="btn btn-primary" href="{% url 'staff-update_services' service.id %}">update status</a></td>
+            <td>{{service.Date}}-{{service.time}}</td>
+            <td><a class="btn btn-dark" href="{% url 'staff-update_services' service.id %}">update status</a></td>
           </tr>
+          {% endif %}
             {% endfor %} 
       </table>
     </div>
+    <br>
+    <br>
+    <hr>
+    <div class="table-responsive">
+      <h4> Completed Services</h4>
+       <table
+         id="example"
+         class="table table-striped data-table"
+         style="width: 100%"
+       >
+       <thead class="table-dark">
+         <tr>
+           <th>Name</th>
+           <th>Applied service</th>
+           <th>Status</th>
+           <th>Date-time</th>
+           <th>View Documents</th>
+         </tr>
+       </thead>
+         <tbody>
+           
+          {% for service in services %}
+            {% if service.Status == comp1.Status  %}
+             <tr>
+             <td>{{service.CustomerId}}</td>
+             <td>{{service.ServiceName.ServiceName}}</td>
+             <td ><i class="btn btn-danger">{{service.Status}}</i></td>
+             <td>{{service.Date}}-{{service.time}}</td>
+             <td><a class="btn btn-secondary" href="{% url 'staff-viewDocuments' service.id %}">View</a></td>
+            </tr>
+          {% endif %}
+        {% endfor %} 
+       </table>
+     </div>
   </div>
 {% endblock %}

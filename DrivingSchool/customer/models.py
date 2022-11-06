@@ -4,7 +4,7 @@ from user.models import Branch,ServicesNameAndPrice,studyLicenceNameAndPrice
 from user.models import *
 from django.contrib.auth.models import User
 from django.utils import timezone
-from datetime import date
+from datetime import date,time
 
 
 MaleOrFemale = (
@@ -12,6 +12,12 @@ MaleOrFemale = (
     ( 'female','female' )
 )
 
+serviceProgresses = (
+    ('Pending','Pending'),
+    ('Processing','Processing'),
+    ('Forwarded to RTO','Forwarded to RTO'),
+    ('Complete','Complete')
+)
     
 class CustomerDetails(models.Model):
     CustomerId = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -64,7 +70,10 @@ class ServiceApplication(models.Model):
     MedicalCirtifict = models.ImageField(upload_to = "MedicalCirtifict",null = True,blank=True)
     SchoolCirtifict = models.ImageField(upload_to = "SchoolCirtifict",null = True,blank=True)
     DrivingLicenseOld = models.ImageField(upload_to = "DrivinLicenseOld",null = True,blank=True)
-    Status = models.CharField(max_length=100,null = True,default="Pending") #set default value later
+    Status = models.CharField(max_length=100,null = True,choices=serviceProgresses,default="Pending") #set default value later
+    time = models.TimeField(default=timezone.now,null=True)
+    Date = models.DateField(default=date.today,null=True)
+
     def __str__(self):
         return f'{self.CustomerId}-{self.ServiceName}'
 
@@ -88,7 +97,10 @@ class Payment(models.Model):
         return f'{self.CustomerId}-Rs:{self.amount}-(Date : {self.Date}) '
         #need dervice name
 
-
+class AppliedServiceSchedule(models.Model):
+    serviceId = models.OneToOneField(ServiceApplication,on_delete=models.CASCADE)
+    learningDate = models.DateField(null=True,default=False)
+    serviceDate = models.DateField(null=True,default=False)
 
 
 

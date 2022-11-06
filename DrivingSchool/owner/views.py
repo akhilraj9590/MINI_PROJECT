@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from user.models import Profile ,studyLicenceNameAndPrice , Instructor
 from customer.models import CustomerDetails, ServiceApplication
-from .form import addInstructors
+from .form import addInstructors,CustomerResistrationform
 from customer.form import Resistrationform
 from django.contrib.auth.forms import UserCreationForm
 from user.models import Branch
@@ -90,3 +90,16 @@ def addStaff(request):
         "branchName":branchName,
     }
     return render(request,'owner/addStaff.html',context)
+
+@login_required
+def addStudent(request):
+    form = CustomerResistrationform(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+    else:
+        form = CustomerResistrationform()
+    context = {
+        'form':form ,
+    }
+    return render(request,'owner/addStudent.html',context)

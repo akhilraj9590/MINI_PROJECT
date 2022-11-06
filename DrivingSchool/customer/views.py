@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from .form import ApplyNewLicenceform, Resistrationform ,ServiceApplication 
+from .form import * 
 from user.models import Branch 
 from .models import Payment
 
@@ -29,13 +29,13 @@ def admission(request):
     }
     return render(request,'customer/admission.html',context)
 
-def selectBranch(request):
-    branch = Branch.objects.all()
-    context = {
-        'branch' : branch ,
-    }
-    return render(request,'customer/selectBranch.html',context)
-
+# def selectBranch(request):
+#     branch = Branch.objects.all()
+#     context = {
+#         'branch' : branch ,
+#     }
+#     return render(request,'customer/selectBranch.html',context)
+@login_required
 def applyNewLicence(request):
     c1=request.user.id
     if request.method == 'POST':
@@ -49,17 +49,26 @@ def applyNewLicence(request):
     }
     return render(request , 'customer/applyNewLicence.html',context)
 
+
+@login_required
 def appliedService(request):
-    services = ServiceApplication.objects.all()
+    c1 = request.user.id
+    services = ServiceApplication.objects.filter(CustomerId_id=c1)
+    # servicesid1 = ServiceApplication.objects.get(CustomerId_id=c1).id
+    # serviceSchedule1 = AppliedServiceSchedule.objects.filter(serviceId_id=servicesid1)
+
+
     context = {
         'services' : services,
+        # 'serviceSchedule1':serviceSchedule1,
     }
     return render(request,'customer/appliedService.html',context)
 
+
+@login_required
 def DrivingPaymentHistory(request):
     c1 = request.user
     payments1 = Payment.objects.filter(CustomerId=c1,driveRelated=True)
-    print(payments1)
     context = {
         'payments1':payments1,
     }

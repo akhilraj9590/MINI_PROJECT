@@ -49,12 +49,13 @@ def ManageAppliedServices(request):
     br = Profile.objects.get(user_id=s1).staffBranch_id
     services = ServiceApplication.objects.filter(BranchId_id = br)
     brName = Profile.objects.get(user=request.user).staffBranch
-
-    
+    comp1 = ServiceApplication.objects.filter(Status="Complete").first()
+    # print("sdf",comp1.Status)
     context = {
         'services':services,
         'br' : br ,
         'brName':brName,
+        'comp1':comp1,
     }
     return render(request,'staff/manageAppliedServices.html',context)
 
@@ -66,7 +67,6 @@ def update_services(request, pk):
 
     if request.method == 'POST' :
         form = AppliedServicesform(request.POST,initial={'Status':service1.Status })
-        print('sdf',form)
         service1.Status=form.data['Status']
         service1.save()
         return redirect("staff-ManageAppliedServices")
@@ -80,3 +80,25 @@ def update_services(request, pk):
     }
     return render(request,'staff/update_services.html',context)
 
+@login_required
+def viewDocuments(request,pk):
+    service1 = ServiceApplication.objects.get(id=pk)
+    serviceName1 = ServiceApplication.objects.get(id=pk).ServiceName.ServiceName
+    nameLMV = ServicesNameAndPrice.objects.get(ServiceName='LMV').ServiceName
+    nameMC = ServicesNameAndPrice.objects.get(ServiceName='M/C').ServiceName
+    nameHeavyBadge = ServicesNameAndPrice.objects.get(ServiceName='HEAVY + BADGE').ServiceName
+    nameConductor = ServicesNameAndPrice.objects.get(ServiceName='CONDUCTOR').ServiceName
+    nameHazardous  = ServicesNameAndPrice.objects.get(ServiceName='HAZARDOUS').ServiceName
+    localHost1=request.get_host()
+    # print("sdf", request.get_host())
+    context = {
+        'localHost1':localHost1,
+        'service1':service1,
+        'serviceName1':serviceName1,
+        'nameLMV': nameLMV,
+        'nameMC':nameMC,
+        'nameHeavyBadge':nameHeavyBadge,
+        'nameConductor':nameConductor,
+        'nameHazardous':nameHazardous
+    }
+    return render(request,'staff/viewDocuments.html',context)

@@ -10,5 +10,6 @@ urlpatterns = [
     path('appliedServices/',views.appliedServices,name="owner-appliedServices"),
     path('addInstructor/',views.addInstructor,name="owner-addInstructor"),
     path('addStaff/',views.addStaff,name="owner-addStaff"),
+    path('addStudent/',views.addStudent,name="owner-addStudent"),
 
 ]

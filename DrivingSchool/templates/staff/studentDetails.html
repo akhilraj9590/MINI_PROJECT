@@ -14,6 +14,7 @@
       >
       <thead class="table-dark">
         <tr>
+          <th>No</th>
           <th>Name</th>
           <th>Branch</th>
           <th>Package</th>
@@ -25,6 +26,7 @@
         <tbody>
             {% for each in students %}
             <tr>
+            <td>{{forloop.counter}}</td>
             <td>{{each}}</td>
             <td>{{each.BranchId}}</td>
             <td>{{each.DrivingPackage.LicenceType}}</td>

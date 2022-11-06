@@ -7,4 +7,5 @@ urlpatterns = [
     path('studentDetails/',views.studentDetails,name="staff-studentsDetails"),
     path('manageAppliedServices/',views.ManageAppliedServices,name='staff-ManageAppliedServices'),
     path('update_services/<int:pk>',views.update_services,name='staff-update_services'),
+    path('viewDocuments/<int:pk>',views.viewDocuments,name='staff-viewDocuments'),
 ]

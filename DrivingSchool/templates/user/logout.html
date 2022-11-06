@@ -1,3 +1,20 @@
 {% extends 'partials/base.html' %}
 {% block title %}Logout Page{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 ">
+           <div class="border bg-white p-3 offset-md-3">
+                <h3 class="text-center">Logout Succefully</h3>
+                <br>
+                <br>
+
+                <a href="{% url 'user-login' %}" class="btn btn-success">Back to Login</a>
+                <hr>
+           </div> 
+        </div>
+    </div>
+  </div>
+
+{% endblock %}
 

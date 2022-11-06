@@ -1,0 +1,32 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}View Documents{% endblock %}
+{% block sidebar %}
+{% include 'staff/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="container">
+   <h4>{{serviceName1}} Docunments of {{service1.CustomerId}}</h4>
+   {% if serviceName1 == nameLMV or serviceName1 == nameMC %}
+    Passport Photo : <img src="http://{{localHost1}}/media/{{service1.Photo}}"> <!-- later update dynamically the local host -->
+    <br>
+    Physical Fitness : <img src="http://{{localHost1}}/media/{{service1.Photo}}">
+    <br>
+    Medical Cirtifict : <img src="http://{{localHost1}}/media/{{service1.Photo}}">
+    <br>
+    ID Proof : <img src="http://{{localHost1}}/media/{{service1.Photo}}">
+    <br>
+    Age Proof : <img src="http://{{localHost1}}/media/{{service1.Photo}}">
+    <br>
+    <hr>
+    <a class="btn btn-secondary" href="">Print
+
+    </a>
+
+   {% elif serviceName1 == nameConductor %}
+   cond
+   Passport Photo : <img src="http://{{localHost1}}/media/{{service1.Photo}}"> <br> <!-- later update dynamically the local host --> 
+    
+   {% endif %}
+</div>
+{% endblock %}

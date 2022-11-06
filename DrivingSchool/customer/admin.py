@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomerDetails , DrivingApplication , SavedLicence , ServiceApplication ,schedule ,Payment
+from .models import *
 
 # Register your models here.
 admin.site.register(CustomerDetails)

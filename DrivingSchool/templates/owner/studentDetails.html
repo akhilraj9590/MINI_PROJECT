@@ -4,7 +4,7 @@
 {% include 'owner/sidebar.html' %}
 {% endblock %}
 {% block content %}
-<a href="#" class="btn btn-secondary p-2 m-3">+ Add Student</a>
+<a href="{% url 'owner-addStudent' %}" class="btn btn-secondary p-2 m-3">+ Add Student</a>
 
 <div class="card-body">
     <div class="table-responsive">
@@ -15,6 +15,7 @@
       >
 <thead class="table-dark">
     <tr>
+      <th>No</th>
       <th>Student Name</th>
       <th>Gender</th>
       <th>Branch Name</th>
@@ -26,6 +27,7 @@
       
         {% for each in student1 %}
         <tr>
+        <td>{{forloop.counter}}</td>
         <td>{{each}}</td>
         <td>{{each.Gender}}</td>
         <td>{{each.BranchId}}</td>
