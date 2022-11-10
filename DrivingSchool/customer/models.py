@@ -104,6 +104,10 @@ class AppliedServiceSchedule(models.Model):
 
 
 
+class balanceAndAdvance(models.Model):
+    CustomerId = models.OneToOneField(User, on_delete=models.CASCADE, null=True, db_constraint=False)
+    total = models.PositiveIntegerField(null=True,default=0)
+    paid = models.PositiveIntegerField(null=True,default=0)
 
 
 

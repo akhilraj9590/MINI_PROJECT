@@ -7,6 +7,16 @@
 {% block content %}
 <div class="card-body">
     <div class="table-responsive">
+      this is driving related fields change it to driving related <br>
+      <div class="btn btn-info">Total Amount - Rs <b>{{totalAmountcalc}}</b> </div> <br><br>
+      <div class="btn btn-primary">Total amount Paid- Rs{{totalPaid}}</div> <br><br>
+      
+      {% if balanceAdvanceCalc < zero %}
+       <div class="btn btn-success">Advance Paid-Rs:{{ negbalanceAdvanceCalc }}</div> <br><br>
+      {% else %}
+        <div class="btn btn-danger">Balace-Rs:{{balanceAdvanceCalc}}</div> <br><br>
+        <div class="btn btn-dark">Pay $</div> <br><br>
+      {% endif %}
       <table
         id="example"
         class="table table-striped data-table"
