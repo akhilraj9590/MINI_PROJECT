@@ -35,28 +35,8 @@
     </div>
     <hr>
     <h3>Schedules ON</h3>
-    <!-- <div class="table-responsive">
-      <table
-        id="example"
-        class="table table-striped data-table"
-        style="width: 100%"
-      >
-      <thead class="table-dark">
-        <tr>
-          <th>Applied Service</th>
-          <th>Branch</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-        <tbody>
-            {% for each in serviceSchedule1 %}
-            <tr>
-            <td>{{each.serviceId.CustomerId}}</td>
-            <td>{{each.serviceId.BranchId}}</td>
-            <td>{{each.LearningDate}}</td>
-          </tr>
-            {% endfor %} 
-      </table>
-    </div> -->
+    {% for each in services %}
+      <b>{{each.ServiceName.ServiceName}}</b> <br> ------------ <br> Learning Date :<i class="text-primary"> {{each.learnigdate}} </i>(<i class="text-danger">{{each.leanigStatus}}</i>) <br> Test Date:<i class="text-primary">{{each.testDate}}</i> (<i class="text-danger">{{each.testStatus}}</i>) <br> ----------<br><br><br><br>
+    {% endfor %}
   </div>
 {% endblock %}

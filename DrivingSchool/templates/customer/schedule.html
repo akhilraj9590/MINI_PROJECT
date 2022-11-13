@@ -1,0 +1,68 @@
+{% extends 'partials/base.html' %}
+{% block title %}Schedule{% endblock %}
+{% block sidebar %}
+{% include 'customer/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="card-body">
+    <div class="table-responsive">
+        <h3>Up coming</h3>
+      <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+      <thead class="table-dark">
+        <tr>
+          <th>Driving</th>
+          <th>Venue</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+        <tbody>
+            <!-- {% for each in services %} -->
+            <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="btn btn-info">a</td>
+          </tr>
+            <!-- {% endfor %}  -->
+      </table>
+    </div>
+  </div>
+  <hr>
+  <div class="card-body">
+    <div class="table-responsive">
+        <h3>Completed</h3>
+      <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+      <thead class="table-dark">
+        <tr>
+          <th>Driving</th>
+          <th>Venue</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+        <tbody>
+            <!-- {% for each in services %} -->
+            <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="btn btn-info">a</td>
+          </tr>
+            <!-- {% endfor %}  -->
+      </table>
+    </div>
+  </div>
+{% endblock %}

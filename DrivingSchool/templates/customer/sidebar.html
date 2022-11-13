@@ -20,23 +20,18 @@
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link px-3">
+          <a href="{% url 'customer-schedules' %}" class="nav-link px-3">
             <span class="me-2"><i class="bi bi-calendar-event"></i></span>
             <span>Schedules</span>
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link px-3">
+          <a href="{% url 'customer-attendence' %}" class="nav-link px-3">
             <span class="me-2"><i class="bi bi-calendar3"></i></span>
             <span>Attendens</span>
           </a>
         </li>
-        <li>
-          <a href="{% url 'customer-DriningPaymentHistory' %}" class="nav-link px-3">
-            <span class="me-2"></span>
-            <span>Payment History</span>
-          </a>
-        </li>
+        
         <li class="my-1"><hr class="dropdown-divider bg-light" /></li>
         <li>
           <div class="text-info small fw-bold text-uppercase px-3 mb-3">
@@ -58,22 +53,27 @@
         <li>
           <a href="#" class="nav-link px-3">
             <span class="me-2"></span>
-            <span>licence modicication</span>
+            <span>licence modification</span>
           </a>
         </li>
         <li>
           <a href="#" class="nav-link px-3">
             <span class="me-2"></span>
-            <span>RC modicication</span>
+            <span>RC modification</span>
           </a>
         </li>
         <li>
           <a href="{% url 'customer-appliedService' %}" class="nav-link px-3">
-            <span>Applied Status</span>
+            <span>Applied new licence Status</span>
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link px-3">
+          <a href="" class="nav-link px-3">
+            <span>RC/Licence modification Status</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'customer-DriningPaymentHistory' %}" class="nav-link px-3"> <!-- change accordng to service-->
             <span>Payment history</span>
           </a>
         </li>
@@ -84,9 +84,9 @@
           </div>
         </li>
         <li>
-          <a href="#" class="nav-link px-3">
+          <a href="{% url 'customer-DriningPaymentHistory' %}" class="nav-link px-3">
             <span class="me-2"></span>
-            <span>Total payment</span>
+            <span>Payment History</span>
           </a>
         </li>
        

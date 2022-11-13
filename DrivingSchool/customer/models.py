@@ -18,6 +18,10 @@ serviceProgresses = (
     ('Forwarded to RTO','Forwarded to RTO'),
     ('Complete','Complete')
 )
+scheduleStatus = (
+    ( 'Up Coming' , 'Up Coming'),
+    ( 'Complete','Complete' )
+)
     
 class CustomerDetails(models.Model):
     CustomerId = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -30,16 +34,18 @@ class CustomerDetails(models.Model):
     Gender = models.CharField(max_length=20,choices=MaleOrFemale,null=True)
     Phone1 = models.CharField(max_length=100,null=True)
     Phone2 = models.CharField(max_length=100,null=True)
+    TotalHours = models.FloatField(null=True,default=10)
+    CompletedHours = models.FloatField(default=0)
     CreatedTime = models.TimeField(default=timezone.now)
     CreatedDate = models.DateField(default=date.today )
     def __str__(self):
         return f'{self.FirstName} {self.LastName}'
 
-class DrivingApplication(models.Model):
-    CustomerId = models.ForeignKey(User,on_delete=models.CASCADE)
-    BranchId =  models.ForeignKey(Branch, on_delete=models.CASCADE)
-    package = models.CharField(max_length=100,null=True)
-    amount = models.PositiveBigIntegerField(null=True)
+class DrivingStudyDetails(models.Model):
+    DrivingCustomer = models.ForeignKey(CustomerDetails,on_delete=models.CASCADE)
+    # BranchId =  models.ForeignKey(Branch, on_delete=models.CASCADE)
+    # package = models.CharField(max_length=100,null=True)
+    # amount = models.PositiveBigIntegerField(null=True)
     TotalHours = models.FloatField(null=True)
     CompletedHours = models.FloatField(default=0)
 
@@ -55,6 +61,11 @@ class SavedLicence(models.Model): #already have licence or save licence after go
     def __str__(self):
         return f'{self.CustomerId.FirstName}-{self.LicenceType}-{self.LicenceNumber}'
 
+testStatus = (
+    ( 'Not Scheduled' , 'Not Scheduled'),
+    ('Scheduled','Scheduled'),
+    ( 'Complete','Complete')
+)
 
 class ServiceApplication(models.Model):
     CustomerId = models.ForeignKey(User, on_delete=models.CASCADE, null=True, db_constraint=False)
@@ -70,7 +81,11 @@ class ServiceApplication(models.Model):
     MedicalCirtifict = models.ImageField(upload_to = "MedicalCirtifict",null = True,blank=True)
     SchoolCirtifict = models.ImageField(upload_to = "SchoolCirtifict",null = True,blank=True)
     DrivingLicenseOld = models.ImageField(upload_to = "DrivinLicenseOld",null = True,blank=True)
-    Status = models.CharField(max_length=100,null = True,choices=serviceProgresses,default="Pending") #set default value later
+    Status = models.CharField(max_length=100,null = True,choices=serviceProgresses,default="Pending")
+    learnigdate = models.DateField(null = True,blank=True)
+    testDate = models.DateField(null = True,blank=True)
+    leanigStatus = models.CharField(max_length=100,null = True,blank=True,choices=testStatus,default="Not Scheduled")
+    testStatus = models.CharField(max_length=100,null = True,blank=True,choices=testStatus,default="Not Scheduled")
     time = models.TimeField(default=timezone.now,null=True)
     Date = models.DateField(default=date.today,null=True)
 
@@ -78,11 +93,13 @@ class ServiceApplication(models.Model):
         return f'{self.CustomerId}-{self.ServiceName}'
 
 class schedule(models.Model):
-    UserId = models.ForeignKey(User, on_delete=models.CASCADE, null = True, db_constraint=False)
-    BranchId =  models.ForeignKey(Branch, on_delete=models.CASCADE)
+    drivingApplication = models.ForeignKey(CustomerDetails, on_delete=models.CASCADE, null = True, db_constraint=False)
+    # BranchId =  models.ForeignKey(Branch, on_delete=models.CASCADE)
     Venue = models.CharField(max_length =100,null=True)
     Date = models.DateField()
     time = models.TimeField()
+    Status = models.CharField(max_length=20,choices=scheduleStatus,null=True,default="Up Coming")
+
 
 
 class Payment(models.Model):
@@ -92,7 +109,7 @@ class Payment(models.Model):
     time = models.TimeField(default=timezone.now)
     Date = models.DateField(default=date.today )
     discription = models.CharField(max_length =200,null=True)
-    driveRelated = models.BooleanField(null=True,default=False)
+    # driveRelated = models.BooleanField(null=True,default=False)
     def __str__(self):
         return f'{self.CustomerId}-Rs:{self.amount}-(Date : {self.Date}) '
         #need dervice name

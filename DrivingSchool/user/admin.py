@@ -8,5 +8,6 @@ admin.site.register(Branch)
 admin.site.register(ServicesNameAndPrice)
 admin.site.register(studyLicenceNameAndPrice)
 admin.site.register(Instructor)
+# admin.site.register(ServicesNameAndPriceOfDirectApplication)
 
 admin.site.site_header = 'Driving School'

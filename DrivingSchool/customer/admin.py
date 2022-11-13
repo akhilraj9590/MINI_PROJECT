@@ -3,7 +3,7 @@ from .models import *
 
 # Register your models here.
 admin.site.register(CustomerDetails)
-admin.site.register(DrivingApplication)
+admin.site.register(DrivingStudyDetails)
 admin.site.register(SavedLicence)
 admin.site.register(ServiceApplication)
 admin.site.register(schedule)

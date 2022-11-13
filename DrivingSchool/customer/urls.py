@@ -9,4 +9,10 @@ urlpatterns = [
     path('applyNewLicence/',views.applyNewLicence,name='customer-applyNewLicence'),
     path('appliedService',views.appliedService,name='customer-appliedService'),
     path('DrivingPaymentHistory',views.DrivingPaymentHistory,name='customer-DriningPaymentHistory'),
+    path('schedule',views.schedules,name='customer-schedules'),
+    path('attendence',views.attendence,name='customer-attendence'),
+    path('pay',views.pay,name='customer-pay'),
+
+
+
 ]
