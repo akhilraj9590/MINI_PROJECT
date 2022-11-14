@@ -1,0 +1,12 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Manage Student Schedule{% endblock %}
+{% block branch %}(Br:{{brName}}){% endblock %}
+
+{% block sidebar %}
+{% include 'staff/sidebar.html' %}
+{% endblock %}
+{% block content %}
+{{branch.staffBranch}}
+Manage schedule page
+{% endblock %}

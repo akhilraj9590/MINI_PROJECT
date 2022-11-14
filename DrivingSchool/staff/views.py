@@ -102,3 +102,13 @@ def viewDocuments(request,pk):
         'nameHazardous':nameHazardous
     }
     return render(request,'staff/viewDocuments.html',context)
+@login_required
+def manageStudentSchedule(request):
+    s1= request.user
+    # staffBranch1 = Profile.objects.all()
+    # studentScheduleAvailable2 = CustomerDetails.objects.all().values('CompletedHours')
+    # studentScheduleAvailable1 = CustomerDetails.objects.all().values('TotalHours')
+    # print(staffBranch1,"staff branch")
+    # for each in staffBranch1:
+    #     print(each.staffBranch)
+    return render(request,'staff/ManageStudentSchedule.html')

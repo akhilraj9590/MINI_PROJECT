@@ -5,8 +5,17 @@
 {% endblock %}
 {% block content %}
 <div class="card-body">
+  {% for each in customerPackage %}
+  ---------------------------- <br>
+  <i class="btn btn-success" > Avaibale Hours For {{each.DrivingPackage.LicenceType}} : <b> {{each.TotalHours}} Hr</b></i> <br> <br>
+  <i class="btn btn-danger" > Completed Hours For {{each.DrivingPackage.LicenceType}} : <b></b> </i> <br>
+  ---------------------------- <br>
+  {% endfor %}
     <div class="table-responsive">
-        <h3>Up coming</h3>
+        <h3>Up coming Schedules</h3>
+        <!-- {% for each in schedule1 %}
+        {{each.time}}
+        {% endfor %} -->
       <table
         id="example"
         class="table table-striped data-table"
@@ -18,26 +27,30 @@
           <th>Venue</th>
           <th>Date</th>
           <th>Time</th>
+          <th>Hours</th>
           <th>Status</th>
         </tr>
       </thead>
         <tbody>
-            <!-- {% for each in services %} -->
+            {% for each in schedule1 %}
+            {% if each.Status != completeStatus %}
             <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="btn btn-info">a</td>
-          </tr>
-            <!-- {% endfor %}  -->
+              <td>{{each}}</td>
+              <td>{{each.Venue}}</td>
+              <td>{{each.Date}}</td>
+              <td>{{each.timeInHour}} Hrs</td>
+              <td>{{each.time}}</td>
+              <td class="btn btn-info">{{each.Status}}</td>
+           </tr>
+           {% endif %}
+          {% endfor %}
       </table>
     </div>
   </div>
   <hr>
   <div class="card-body">
     <div class="table-responsive">
-        <h3>Completed</h3>
+        <h3>Completed Schedule</h3>
       <table
         id="example"
         class="table table-striped data-table"
@@ -46,22 +59,24 @@
       <thead class="table-dark">
         <tr>
           <th>Driving</th>
-          <th>Venue</th>
+          <!-- <th>Venue</th> -->
           <th>Date</th>
-          <th>Time</th>
+          <th>Hours Completed</th>
           <th>Status</th>
         </tr>
       </thead>
         <tbody>
-            <!-- {% for each in services %} -->
-            <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td class="btn btn-info">a</td>
-          </tr>
-            <!-- {% endfor %}  -->
+            
+              {% for each in schedule1 %}
+              {% if each.Status == completeStatus %}
+              <tr>
+                <td>{{each.drivingApplication.DrivingPackage.LicenceType}}</td>
+                <td>{{each.Date}}</td>
+                <td>{{each.timeInHour}} Hrs</td>
+                <td class="btn btn-info">{{each.Status}}</td>
+             </tr>
+             {% endif %}
+            {% endfor %}
       </table>
     </div>
   </div>

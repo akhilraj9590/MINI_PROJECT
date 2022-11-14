@@ -41,7 +41,7 @@
             <li class="nav-item dropdow">
               {% if user.is_authenticated %}
               <div class=" d-flex justify-content-between">
-                <div><a class="nav-link ms-2 text-info  " href="#" role="button" aria-expanded="false">{{user |title}}  </a></div> 
+                <div><a class="nav-link ms-2 text-info  " href="#" role="button" aria-expanded="false"> {{user |title}}  </a></div> 
                 <div><a class="nav-link ms-2 text-success  " href="{% url 'user-logout' %}" role="button" aria-expanded="false">| Logout</a></div>
             </div>
               

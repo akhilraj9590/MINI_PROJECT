@@ -105,9 +105,17 @@ def DrivingPaymentHistory(request):
 def schedules(request):
     c1 = request.user
     drivingCustomerId = CustomerDetails.objects.filter(CustomerId=c1).values_list('id', flat=True)
-    schedule1 = schedule.objects.filter().values_list('id', flat=True)
-    print(schedule1)
-    return render(request,'customer/schedule.html')
+    schedule1 = schedule.objects.filter(drivingApplication__id__in=drivingCustomerId)
+    completeStatus  = "Complete"
+    customerPackage = CustomerDetails.objects.filter(CustomerId=c1)
+    print(customerPackage)
+    context = {
+        'schedule1':schedule1,
+        'completeStatus':completeStatus, 
+        'customerPackage':customerPackage,
+    }
+    
+    return render(request,'customer/schedule.html',context)
 
 def attendence(request):
     return render(request,'customer/attendence.html')
