@@ -10,6 +10,8 @@ from .form import addInstructors,CustomerResistrationform
 from customer.form import Resistrationform
 from django.contrib.auth.forms import UserCreationForm
 from user.models import Branch
+from customer.models import *
+from django.contrib.auth.forms import UserCreationForm
 
 
 
@@ -103,3 +105,34 @@ def addStudent(request):
         'form':form ,
     }
     return render(request,'owner/addStudent.html',context)
+
+@login_required
+def totalRecipt(request):
+    o1=request.user
+    recipts1 = Payment.objects.all()
+    totalRecipt = 0
+    for each in recipts1:
+        totalRecipt=totalRecipt+each.amount
+
+    context = {
+       'recipts1':recipts1, 
+       'totalRecipt':totalRecipt,
+    }
+    return render(request,'owner/TotalRecipts.html',context)
+
+def userRegister(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('owner-userCreated') #this is temparary redirect change it later
+    else:
+        form = UserCreationForm()
+    context ={
+        'form': form
+    }
+    return render(request,'owner/createUser.html',context)
+
+@login_required
+def userCreated(request):
+    return render(request,'owner/userAddMessage.html')

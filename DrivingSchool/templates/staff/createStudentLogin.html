@@ -1,0 +1,26 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Manage Student Schedule{% endblock %}
+{% block branch %}(Br:{{brName}}){% endblock %}
+
+{% block sidebar %}
+{% include 'staff/sidebar.html' %}
+{% endblock %}
+{% block content %}
+{{branch.staffBranch}}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 ">
+           <div class="border bg-white p-3 offset-md-3">
+                <h3>Registration page</h3>
+                <hr>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                <input class="btn btn-success" type="submit" value="Register">
+                </form>
+           </div> 
+        </div>
+    </div>
+  </div>
+{% endblock %}

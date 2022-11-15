@@ -5,6 +5,8 @@
 {% endblock %}
 {% block content %}
 <div class="card-body">
+  
+  
     <div class="table-responsive">
         <h3>Attendence according to driving</h3>
         <div class="btn btn-success">Availabe hr</div> <br> <br>
@@ -19,17 +21,17 @@
         <tr>
           <th>Date</th>
           <th>Completed Hours</th>
-          
+          <th>Driving Type</th>
         </tr>
       </thead>
         <tbody>
-            <!-- {% for each in services %} -->
-            <tr>
-            <td></td>
-            <td></td>
-            
-          </tr>
-            <!-- {% endfor %}  -->
+            {% for each in schedule1 %}
+              <tr>
+                <td>{{each.Date}}</td>
+                <td>{{each.timeInHour}} hr</td>
+                <td>{{each.drivingApplication.DrivingPackage.LicenceType}}</td>
+              </tr>
+            {% endfor %} 
       </table>
     </div>
   </div>

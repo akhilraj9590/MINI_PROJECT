@@ -11,5 +11,7 @@ urlpatterns = [
     path('addInstructor/',views.addInstructor,name="owner-addInstructor"),
     path('addStaff/',views.addStaff,name="owner-addStaff"),
     path('addStudent/',views.addStudent,name="owner-addStudent"),
-
+    path('recipts',views.totalRecipt,name="owner-recipt"),
+    path('createUser',views.userRegister,name="owner-createUser"),
+    path('userCreatedSuccesfully',views.userCreated,name='owner-userCreated')
 ]

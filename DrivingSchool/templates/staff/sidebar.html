@@ -7,6 +7,16 @@
  <div class="offcanvas-body p-0">
    <nav class="navbar-dark">
      <ul class="navbar-nav">
+      <li>
+        <div class="text-info small fw-bold text-uppercase px-3">
+          Login Configration
+        </div>
+        <li>
+          <a href="{% url 'staff-userRegister' %}" class="nav-link px-3">
+            <span class="me-2"></span>
+            <span>Create Students Login</span>
+          </a>
+        </li>
        <li>
          <div class="text-info small fw-bold text-uppercase px-3">
            Student 
@@ -61,7 +71,7 @@
          </div>
        </li>
        <li>
-        <a href="#" class="nav-link px-3">
+        <a href="{% url 'staff-recipts' %}" class="nav-link px-3">
           <span class="me-2"></span>
           <span>Recipt Details</span>
         </a>

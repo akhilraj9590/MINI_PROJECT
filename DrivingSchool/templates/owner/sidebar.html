@@ -7,6 +7,17 @@
  <div class="offcanvas-body p-0">
    <nav class="navbar-dark">
      <ul class="navbar-nav">
+      <li>
+        <div class="text-info small fw-bold text-uppercase px-3">
+          Login Configration
+        </div>
+        <li>
+          <a href="{% url 'owner-createUser' %}" class="nav-link px-3">
+            <span class="me-2"></span>
+            <span>Create Students Login</span>
+          </a>
+        </li>
+      </li>
        <li>
          <div class="text-info small fw-bold text-uppercase px-3">
            Brach Details 
@@ -37,18 +48,18 @@
         </a>
       </li>
       <li>
-        <a href="#" class="nav-link px-3">
+        <a href="{% url 'owner-recipt' %}" class="nav-link px-3">
           <span class="me-2"></span>
           <span>View Recipt Details</span>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a href="#" class="nav-link px-3">
           <span class="me-2"></span>
           <span>View Pending Recipt</span>
         </a>
-      </li>
-       <li class="my-1"><hr class="dropdown-divider bg-light" /></li>
+      </li> -->
+       <!-- <li class="my-1"><hr class="dropdown-divider bg-light" /></li>
        <li>
          <div class="text-info small fw-bold text-uppercase px-3 mb-3">
            Total Report
@@ -59,7 +70,7 @@
            <span class="me-2"></span>
            <span>Daily report</span>
          </a>
-        </li>
+        </li> -->
      </ul>
    </nav>
  </div>

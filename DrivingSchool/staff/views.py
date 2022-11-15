@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from user.models import Profile 
 from customer.models import *
 from .forms import AppliedServicesform
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 @login_required
@@ -112,3 +113,35 @@ def manageStudentSchedule(request):
     # for each in staffBranch1:
     #     print(each.staffBranch)
     return render(request,'staff/ManageStudentSchedule.html')
+
+@login_required
+def recipts(request):
+    s1= request.user
+    branch1 = Profile.objects.filter(user=s1)
+    for each in branch1:
+        branchName = each.staffBranch
+    recipts1 = Payment.objects.filter(BranchId=branchName)
+    # print(recipts1)
+    totalrecipt = 0
+    for each in recipts1:
+        totalrecipt=totalrecipt+each.amount
+    context = {
+        'recipts1':recipts1,
+        'totalrecipt':totalrecipt,
+    }
+    return render(request,'staff/recipts.html',context)
+
+def userRegister(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('staff-userRegistered')
+    else:
+        form = UserCreationForm()
+    context ={
+        'form': form,
+    }
+    return render(request,'staff/createStudentLogin.html',context)
+def userRegistered(request):
+    return render (request,'staff/userCreatedPage.html')

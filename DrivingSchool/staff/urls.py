@@ -9,4 +9,7 @@ urlpatterns = [
     path('update_services/<int:pk>',views.update_services,name='staff-update_services'),
     path('viewDocuments/<int:pk>',views.viewDocuments,name='staff-viewDocuments'),
     path('manageStudentSchedule',views.manageStudentSchedule,name='staff-manageStudentSchedule'),
+    path('recipts',views.recipts,name='staff-recipts'),
+    path('createUser',views.userRegister,name = 'staff-userRegister'),
+    path('userRegisterd',views.userRegistered,name= 'staff-userRegistered'),
 ]

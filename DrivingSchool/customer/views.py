@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from .form import * 
 from user.models import Branch 
 from .models import *
+import datetime
 
 
 
@@ -118,7 +119,17 @@ def schedules(request):
     return render(request,'customer/schedule.html',context)
 
 def attendence(request):
-    return render(request,'customer/attendence.html')
+    today=datetime.date.today()
+    # print(today,"hai")
+    c1 = request.user
+    drivingCustomerId = CustomerDetails.objects.filter(CustomerId=c1).values_list('id', flat=True)
+    schedule1 = schedule.objects.filter(drivingApplication__id__in=drivingCustomerId)
+    # for each in schedule1:
+    #     print(each)
+    context = {
+        'schedule1':schedule1,
+    }
+    return render(request,'customer/attendence.html',context)
 
 def pay(request):
     c1 = request.user

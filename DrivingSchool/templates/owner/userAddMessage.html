@@ -1,0 +1,31 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}User added Successfully{% endblock %}
+{% block sidebar %}
+{% include 'owner/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<!-- <div class="container">
+    <div class="row mt-5">
+        <div class="col-md-10 ">
+           <div class=" p-3 offset-md-3">
+            <h3>User Created Successfully</h3> <br>
+            <a class="btn btn-info" href="{% url 'owner-createUser' %}">Add another User</a>
+
+        </div>
+    </div>
+</div> -->
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 ">
+           <div class="border bg-white p-3 offset-md-3">
+                <h3 class="text-center">User Registered Successfully</h3>
+                <br>
+                <br>
+                <a href="{% url 'owner-createUser' %}" class="btn btn-success">Back User Register</a>
+                <hr>
+           </div> 
+        </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'partials/base.html' %}
+{% block title %}Recipts{% endblock %}
+{% block branch %}(Br:{{brName}}){% endblock %}
+
+{% block sidebar %}
+{% include 'staff/sidebar.html' %}
+{% endblock %}
+{% block content %}
+{{branch.staffBranch}}
+<div class="card-body">
+    <div class="table-responsive">
+     <h4>Recipt details</h4>
+      <table
+        id="example"
+        class="table table-striped data-table"
+        style="width: 100%"
+      >
+      <thead class="table-dark">
+        <tr>
+          <th>Customer</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Time</th>
+          <!-- <th>Branch</th> -->
+        </tr>
+      </thead>
+        <tbody>
+          {% for each in recipts1 %}
+          <tr>
+            <td>{{each.CustomerId}}</td>
+            <td>{{each.amount}}</td>
+            <td>{{each.time}}</td>
+            <td >{{each.Date}}</td>
+            <!-- <td>{{each.BranchId}}</td> -->
+          </tr>
+          {% endfor %}
+      </table>
+      <br>
+      <br>
+      <h3><i>Total Amount Recieved : {{totalrecipt}}</i></h3>
+    </div>
+  </div>
+{% endblock %}
