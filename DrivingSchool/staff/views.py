@@ -4,8 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from user.models import Profile 
 from customer.models import *
-from .forms import AppliedServicesform
+from .forms import *
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
 
 # Create your views here.
 @login_required
@@ -145,3 +148,57 @@ def userRegister(request):
     return render(request,'staff/createStudentLogin.html',context)
 def userRegistered(request):
     return render (request,'staff/userCreatedPage.html')
+
+def student_view(request,pk):
+    students = CustomerDetails.objects.get(id=pk)
+    context = { 
+        'students' : students
+    }
+    return render(request,'staff/student_view.html',context)
+
+def render_pdf_view(request,pk):
+    students = CustomerDetails.objects.get(id=pk)
+    template_path = 'staff/student_form.html'
+    context = {
+        'myvar': 'this is your template context',
+        'students':students
+        
+    }
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="report.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+
+@login_required
+def updateLearningTestDates(request, pk):
+    service1 = ServiceApplication.objects.get(id=pk)
+    # brName = Profile.objects.get(user=request.user).staffBranch
+
+    if request.method == 'POST' :
+        form = TestLearningDatesForm(request.POST,initial={'learnigdate':service1.learnigdate,'leanigStatus':service1.leanigStatus,'testDate':service1.testDate,'testStatus':service1.testStatus })
+        print(form.data['learnigdate'],"asdf")
+        service1.learnigdate=form.data['learnigdate']
+        service1.leanigStatus=form.data['leanigStatus']
+        service1.testDate=form.data['testDate']
+        service1.testStatus=form.data['testStatus']
+        service1.save()
+        return redirect("staff-ManageAppliedServices")
+    else:
+        form = TestLearningDatesForm(initial={'learnigdate':service1.learnigdate,'leanigStatus':service1.leanigStatus,'testDate':service1.testDate,'testStatus':service1.testStatus })
+
+    context = {
+        'service1' : service1 ,
+        'form' : form,
+    }
+    return render(request,'staff/updateLearingTestDates.html',context)

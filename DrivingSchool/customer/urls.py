@@ -12,7 +12,8 @@ urlpatterns = [
     path('schedule',views.schedules,name='customer-schedules'),
     path('attendence',views.attendence,name='customer-attendence'),
     path('pay',views.pay,name='customer-pay'),
-
-
+    path('RcModification',views.RcModication,name="customer-RcModification"),
+    path('appliedRcService',views.appliedRcService,name="customer-appliedRcService"),
+    path('appliedLicenceModificationService',views.appliedLicenceModificationService,name='customer-appliedLicenceModificationService')
 
 ]

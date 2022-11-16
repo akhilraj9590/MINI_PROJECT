@@ -1,0 +1,27 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Update learing test dates{% endblock %}
+{% block sidebar %}
+{% include 'staff/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <a href="{% url 'staff-ManageAppliedServices' %}" class="btn btn-secondary">< Back</a>
+    <div class="row mt-5">
+        <div class="col-md-6 ">
+           <div class="border bg-white p-3 offset-md-3">
+                <h3>Update services</h3>
+                <hr>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <hr>
+                <a class="btn btn-danger" href="{% url 'staff-ManageAppliedServices' %}">Cancel</a>
+                <input class="btn btn-info" type="submit" value="Update">
+                </form>
+                <hr>
+           </div> 
+        </div>
+    </div>
+</div>
+{% endblock %}

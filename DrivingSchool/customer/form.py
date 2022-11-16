@@ -15,6 +15,7 @@ class Resistrationform(forms.ModelForm):
         widgets = {
             'DateOfBirth':DateInput(),
             'Phone1':forms.NumberInput(attrs={'maxlength':10,'minlength':10}),
+
             'Phone2':forms.NumberInput(attrs={'maxlength':10,'minlength':10})
         }
 
@@ -38,7 +39,16 @@ class paymentForm(forms.ModelForm):
     class Meta:
         model = Payment
         fields = "__all__"
-       
+
+class RcModificationForm(forms.ModelForm):
+    class Meta:
+        model = ServiceApplicationOfRcModification
+        fields = ['CustomerId','BranchId','ServiceName','VehicleRegistration','IdProof']
+
+class LicenceModificationForm(forms.ModelForm):
+    class Meta:
+        model = ServiceApplicationOfLicenceModification
+        fields = ['CustomerId','BranchId','ServiceName','IdProof','AgeProof']
 
         
 

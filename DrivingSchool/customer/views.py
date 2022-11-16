@@ -8,6 +8,8 @@ from .form import *
 from user.models import Branch 
 from .models import *
 import datetime
+from django.contrib import messages
+
 
 
 
@@ -43,8 +45,9 @@ def applyNewLicence(request):
     if request.method == 'POST':
         form = ApplyNewLicenceform(request.POST,use_required_attribute=False,initial={'CustomerId': c1})
         if form.is_valid():
-            return redirect ('customer-index')
             form.save()
+            return redirect ('customer-index')
+            
     else:
         form = ApplyNewLicenceform(initial={'CustomerId': c1})
     context = {
@@ -128,6 +131,7 @@ def attendence(request):
     #     print(each)
     context = {
         'schedule1':schedule1,
+        'Complete': 'Complete',
     }
     return render(request,'customer/attendence.html',context)
 
@@ -160,3 +164,42 @@ def pay(request):
         'form':form ,
     }
     return render(request,'customer/payCash.html',context)
+
+def RcModication(request):
+    c1=request.user.id
+    # print(c1,"df")
+    if request.method == 'POST':
+        form = RcModificationForm(request.POST,use_required_attribute=False,initial={'CustomerId': c1})
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Form submission successful')
+            
+    else:
+        form = RcModificationForm(initial={'CustomerId': c1})
+    context = {
+        "form" : form
+    }
+    return render(request,'customer/applyRcModification.html',context)
+
+def appliedRcService(request):
+    c1 = request.user.id
+    services = ServiceApplicationOfRcModification.objects.filter(CustomerId_id=c1)
+    context = {
+        'services' : services,
+    }
+    return render(request,'customer/appliedRcService.html',context)
+
+def appliedLicenceModificationService(request):
+    c1=request.user.id
+    if request.method == 'POST':
+        form = LicenceModificationForm(request.POST,use_required_attribute=False,initial={'CustomerId': c1})
+        if form.is_valid():
+            form.save()
+            return redirect ('customer-index')
+            
+    else:
+        form = LicenceModificationForm(initial={'CustomerId': c1})
+    context = {
+        "form" : form,
+    }
+    return render(request,'customer/appliedLicenceModificationService.html',context)

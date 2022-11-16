@@ -24,6 +24,7 @@
           <th>Status</th>
           <th>Date-time</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
         <tbody>
@@ -37,6 +38,7 @@
             <td ><i class="btn btn-danger">{{service.Status}}</i></td>
             <td>{{service.Date}}-{{service.time}}</td>
             <td><a class="btn btn-dark" href="{% url 'staff-update_services' service.id %}">update status</a></td>
+            <td><a class="btn btn-dark" href="{% url 'staff-updateLearningTestDates' service.id %}">Update learing/ Test date</a></td>
           </tr>
           {% endif %}
             {% endfor %} 
@@ -59,6 +61,7 @@
            <th>Status</th>
            <th>Date-time</th>
            <th>View Documents</th>
+           <th></th>
          </tr>
        </thead>
          <tbody>
@@ -71,6 +74,7 @@
              <td ><i class="btn btn-danger">{{service.Status}}</i></td>
              <td>{{service.Date}}-{{service.time}}</td>
              <td><a class="btn btn-secondary" href="{% url 'staff-viewDocuments' service.id %}">View</a></td>
+             <td><a class="btn btn-dark" href="{% url 'staff-updateLearningTestDates' service.id %}">Update learing/ Test date</a></td>
             </tr>
           {% endif %}
         {% endfor %} 

@@ -130,4 +130,44 @@ class balanceAndAdvance(models.Model):
     paid = models.PositiveIntegerField(null=True,default=0)
 
 
+class ServiceApplicationOfRcModification(models.Model):
+    CustomerId = models.ForeignKey(User, on_delete=models.CASCADE, null=True, db_constraint=False)
+    BranchId =  models.ForeignKey(Branch, on_delete=models.CASCADE)
+    ServiceName = models.ForeignKey(RcModificationsAndPrice, on_delete=models.CASCADE,null=True)
+    SSLC = models.ImageField(upload_to = "ssleImages",null = True,blank=True)
+    IdProof = models.ImageField(upload_to = "IdProof",null = True,blank=True)
+    Photo = models.ImageField(upload_to = "Photo",null = True,blank=True)
+    PhysicalFitness =models.ImageField(upload_to = "PhysicalFitness",null = True,blank=True)
+    AgeProof = models.ImageField(upload_to = "AgeProof",null = True,blank=True)
+    VehicleRegistration = models.ImageField(upload_to = "RCbook",null = True,blank=True)
+    ApplicationOfPSV = models.ImageField(upload_to = "PSVapplication",null = True,blank=True)
+    MedicalCirtifict = models.ImageField(upload_to = "MedicalCirtifict",null = True,blank=True)
+    SchoolCirtifict = models.ImageField(upload_to = "SchoolCirtifict",null = True,blank=True)
+    DrivingLicenseOld = models.ImageField(upload_to = "DrivinLicenseOld",null = True,blank=True)
+    Status = models.CharField(max_length=100,null = True,choices=serviceProgresses,default="Pending")
+    time = models.TimeField(default=timezone.now,null=True)
+    Date = models.DateField(default=date.today,null=True)
+
+    def __str__(self):
+        return f'{self.CustomerId}-{self.ServiceName}'
+
+
+class ServiceApplicationOfLicenceModification(models.Model):
+    CustomerId = models.ForeignKey(User, on_delete=models.CASCADE, null=True, db_constraint=False)
+    BranchId =  models.ForeignKey(Branch, on_delete=models.CASCADE)
+    ServiceName = models.ForeignKey(LicenceModificationsAndPrice, on_delete=models.CASCADE,null=True)
+    SSLC = models.ImageField(upload_to = "ssleImages",null = True,blank=True)
+    IdProof = models.ImageField(upload_to = "IdProof",null = True,blank=True)
+    Photo = models.ImageField(upload_to = "Photo",null = True,blank=True)
+    PhysicalFitness =models.ImageField(upload_to = "PhysicalFitness",null = True,blank=True)
+    AgeProof = models.ImageField(upload_to = "AgeProof",null = True,blank=True)
+    ApplicationOfPSV = models.ImageField(upload_to = "PSVapplication",null = True,blank=True)
+    Status = models.CharField(max_length=100,null = True,choices=serviceProgresses,default="Pending")
+    time = models.TimeField(default=timezone.now,null=True)
+    Date = models.DateField(default=date.today,null=True)
+
+    def __str__(self):
+        return f'{self.CustomerId}-{self.ServiceName}'
+
+
 

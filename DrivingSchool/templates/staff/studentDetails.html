@@ -35,6 +35,7 @@
               {{each.Phone2}}
             </td>
             <td>{{each.CreatedDate}}  ({{each.CreatedTime}})</td>
+            <td><a class="btn btn-info" href="{% url 'staff-student_view' each.id %}">view</a></td>
           </tr>
             {% endfor %} 
       </table>

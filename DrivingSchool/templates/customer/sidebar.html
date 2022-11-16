@@ -57,7 +57,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="nav-link px-3">
+          <a href="{% url 'customer-RcModification' %}" class="nav-link px-3">
             <span class="me-2"></span>
             <span>RC modification</span>
           </a>
@@ -68,15 +68,20 @@
           </a>
         </li>
         <li>
-          <a href="" class="nav-link px-3">
-            <span>RC/Licence modification Status</span>
+          <a href="{% url 'customer-appliedRcService' %}" class="nav-link px-3">
+            <span>RC modification Status</span>
           </a>
         </li>
         <li>
-          <a href="{% url 'customer-DriningPaymentHistory' %}" class="nav-link px-3"> <!-- change accordng to service-->
-            <span>Payment history</span>
+          <a href="{% url 'customer-appliedLicenceModificationService' %}" class="nav-link px-3">
+            <span>Licence modification Status</span>
           </a>
         </li>
+        <!-- <li>
+          <a href="{% url 'customer-DriningPaymentHistory' %}" class="nav-link px-3"> change accordng to service
+            <span>Payment history</span>
+          </a>
+        </li> -->
         <li class="my-1"><hr class="dropdown-divider bg-light" /></li>
         <li>
           <div class="text-info small fw-bold text-uppercase px-3 mb-3">

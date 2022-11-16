@@ -9,5 +9,8 @@ admin.site.register(ServicesNameAndPrice)
 admin.site.register(studyLicenceNameAndPrice)
 admin.site.register(Instructor)
 # admin.site.register(ServicesNameAndPriceOfDirectApplication)
+admin.site.register(RcModificationsAndPrice)
+admin.site.register(LicenceModificationsAndPrice)
+
 
 admin.site.site_header = 'Driving School'

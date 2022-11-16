@@ -55,6 +55,19 @@ class Instructor(models.Model):
         return f'{self.Name}'
 
 
+class RcModificationsAndPrice(models.Model):
+    ServiceName = models.CharField(max_length=100,null=True)
+    amount = models.PositiveBigIntegerField(null=True)
+    def __str__(self):
+        return f'{self.ServiceName}---Rs:{self.amount}'
+
+
+class LicenceModificationsAndPrice(models.Model):
+    ServiceName = models.CharField(max_length=100,null=True)
+    amount = models.PositiveBigIntegerField(null=True)
+    def __str__(self):
+        return f'{self.ServiceName}---Rs:{self.amount}'
+
 
 
 

@@ -1,0 +1,25 @@
+{% extends 'partials/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Apply RC Modification{% endblock %}
+{% block sidebar %}
+{% include 'customer/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-md-6 ">
+         <div class="border bg-white p-3 offset-md-3">
+              <h3>Apply RC Modification</h3>
+              <hr>
+              <form method="POST">
+                  {% csrf_token %}
+                  {{ form | crispy }}
+                  <hr>
+              <input class="btn btn-success" type="submit" value="Register">
+              </form>
+              <hr>
+         </div> 
+      </div>
+  </div>
+</div>
+{% endblock %}

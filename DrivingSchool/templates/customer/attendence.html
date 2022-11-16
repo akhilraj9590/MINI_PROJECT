@@ -26,11 +26,13 @@
       </thead>
         <tbody>
             {% for each in schedule1 %}
+            {% if each.Status == Complete %}
               <tr>
                 <td>{{each.Date}}</td>
                 <td>{{each.timeInHour}} hr</td>
                 <td>{{each.drivingApplication.DrivingPackage.LicenceType}}</td>
               </tr>
+            {% endif %}
             {% endfor %} 
       </table>
     </div>

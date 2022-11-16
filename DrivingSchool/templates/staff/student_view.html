@@ -1,0 +1,32 @@
+{% extends 'partials/base.html' %}
+{% block title %}Attendence{% endblock %}
+{% block sidebar %}
+{% include 'customer/sidebar.html' %}
+{% endblock %}
+{% block content %}
+<table>  
+    <tr>
+        <th>name</th>
+        <td>{{students.FirstName}}{{students.LastName}}</td>        
+    </tr>
+    <tr>
+        <th>branch</th>
+        <td>{{students.BranchId}}</td>
+    </tr>
+    <tr>
+        <th>package</th>
+        <td>{{students.DrivingPackage.LicenceType}}</td>
+    </tr>
+        <th>phone</th>
+        <td>{{students.Phone1}}{{students.Phone2}}</td>
+    </tr>
+    <tr>
+        <th>date</th>
+        <td>{{students.CreatedDate}}</td> 
+    </tr>
+    <tr>
+        <th>print</th>
+        <td><a class="btn btn-info" href="{% url 'staff-render_pdf_view' students.id %}">print</a></td> 
+    </tr>
+</table>
+{% endblock %}
