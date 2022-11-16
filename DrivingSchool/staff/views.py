@@ -202,3 +202,78 @@ def updateLearningTestDates(request, pk):
         'form' : form,
     }
     return render(request,'staff/updateLearingTestDates.html',context)
+
+
+
+@login_required
+def ManageAppliedRCServices(request):
+    s1 = request.user
+    br = Profile.objects.get(user_id=s1).staffBranch_id
+    services = ServiceApplicationOfRcModification.objects.filter(BranchId_id = br)
+    brName = Profile.objects.get(user=request.user).staffBranch
+    comp1 = ServiceApplicationOfRcModification.objects.filter(Status="Complete").first()
+    context = {
+        'services':services,
+        'br' : br ,
+        'brName':brName,
+        'comp1':comp1,
+    }
+    return render(request,'staff/manageAppliedRcServices.html',context)
+
+@login_required
+def updateRCModificationservices(request, pk):
+    service1 = ServiceApplicationOfRcModification.objects.get(id=pk)
+    brName = Profile.objects.get(user=request.user).staffBranch
+
+    if request.method == 'POST' :
+        form = AppliedRCServicesform(request.POST,initial={'Status':service1.Status })
+        service1.Status=form.data['Status']
+        service1.save()
+        return redirect("staff-ManageAppliedRCServices")
+    else:
+        form = AppliedRCServicesform(initial={'Status':service1.Status })
+
+    context = {
+        'service1' : service1 ,
+        'form' : form,
+        'brName':brName,
+    }
+    return render(request,'staff/updateRcServices.html',context)
+
+
+
+    
+@login_required
+def ManageAppliedLicenceServices(request):
+    s1 = request.user
+    br = Profile.objects.get(user_id=s1).staffBranch_id
+    services = ServiceApplicationOfLicenceModification.objects.filter(BranchId_id = br)
+    brName = Profile.objects.get(user=request.user).staffBranch
+    comp1 = ServiceApplicationOfLicenceModification.objects.filter(Status="Complete").first()
+    context = {
+        'services':services,
+        'br' : br ,
+        'brName':brName,
+        'comp1':comp1,
+    }
+    return render(request,'staff/manageAppliedLicenceServices.html',context)
+
+@login_required
+def updateLicenceModificationservices(request, pk):
+    service1 = ServiceApplicationOfLicenceModification.objects.get(id=pk)
+    brName = Profile.objects.get(user=request.user).staffBranch
+
+    if request.method == 'POST' :
+        form = AppliedLicenceServicesform(request.POST,initial={'Status':service1.Status })
+        service1.Status=form.data['Status']
+        service1.save()
+        return redirect("staff-ManageAppliedLicenceServices")
+    else:
+        form = AppliedLicenceServicesform(initial={'Status':service1.Status })
+
+    context = {
+        'service1' : service1 ,
+        'form' : form,
+        'brName':brName,
+    }
+    return render(request,'staff/updateLicenceServices.html',context)

@@ -28,12 +28,12 @@
            <span>View Student Details</span>
          </a>
        </li>
-       <li>
+       <!-- <li>
          <a href="#" class="nav-link px-3">
            <span class="me-2"></span>
            <span>Student Attendence marking</span>
          </a>
-       </li>
+       </li> -->
        <li>
          <a href="{% url 'staff-manageStudentSchedule' %}" class="nav-link px-3">
            <span class="me-2"></span>
@@ -52,18 +52,30 @@
            <span>View Applied Services</span>
          </a>
        </li>
-       <li>
+       <!-- <li>
          <a href="#" class="nav-link px-3">
            <span class="me-2"></span>
            <span>Apply Badge</span>
          </a>
-       </li>
+       </li> -->
        <li>
          <a href="{% url 'staff-ManageAppliedServices' %}" class="nav-link px-3">
            <span class="me-2"></span>
-           <span>Manage Applied Services</span>
+           <span>Manage Applied New Licence / Badge</span>
          </a>
        </li>
+       <li>
+        <a href="{% url 'staff-ManageAppliedRCServices' %}" class="nav-link px-3">
+          <span class="me-2"></span>
+          <span>Manage Applied Rc Modification</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'staff-ManageAppliedLicenceServices' %}" class="nav-link px-3">
+          <span class="me-2"></span>
+          <span>Manage Applied Licence Modification</span>
+        </a>
+      </li>
        <li class="my-1"><hr class="dropdown-divider bg-light" /></li>
        <li>
          <div class="text-info small fw-bold text-uppercase px-3 mb-3">
@@ -76,12 +88,12 @@
           <span>Recipt Details</span>
         </a>
       </li>
-      <li>
+      <!-- <li>
         <a href="#" class="nav-link px-3">
           <span class="me-2"></span>
           <span>Branch Report</span>
         </a>
-      </li>
+      </li> -->
      </ul>
    </nav>
  </div>

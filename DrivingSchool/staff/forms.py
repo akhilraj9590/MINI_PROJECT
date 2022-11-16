@@ -10,6 +10,16 @@ class AppliedServicesform(forms.ModelForm):
         model = ServiceApplication
         fields = ['Status']
 
+class AppliedRCServicesform(forms.ModelForm):
+    class Meta:
+        model = ServiceApplicationOfRcModification
+        fields = ['Status']
+
+class AppliedLicenceServicesform(forms.ModelForm):
+    class Meta:
+        model = ServiceApplicationOfLicenceModification
+        fields = ['Status']
+
 class TestLearningDatesForm(forms.ModelForm):
     class Meta:
         model = ServiceApplication

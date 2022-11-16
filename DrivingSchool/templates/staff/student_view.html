@@ -1,5 +1,5 @@
 {% extends 'partials/base.html' %}
-{% block title %}Attendence{% endblock %}
+{% block title %}View Student Form{% endblock %}
 {% block sidebar %}
 {% include 'customer/sidebar.html' %}
 {% endblock %}
@@ -9,10 +9,7 @@
         <th>name</th>
         <td>{{students.FirstName}}{{students.LastName}}</td>        
     </tr>
-    <tr>
-        <th>branch</th>
-        <td>{{students.BranchId}}</td>
-    </tr>
+  
     <tr>
         <th>package</th>
         <td>{{students.DrivingPackage.LicenceType}}</td>
@@ -29,4 +26,5 @@
         <td><a class="btn btn-info" href="{% url 'staff-render_pdf_view' students.id %}">print</a></td> 
     </tr>
 </table>
+
 {% endblock %}

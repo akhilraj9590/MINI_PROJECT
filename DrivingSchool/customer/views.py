@@ -189,7 +189,7 @@ def appliedRcService(request):
     }
     return render(request,'customer/appliedRcService.html',context)
 
-def appliedLicenceModificationService(request):
+def applyLicenceModificationService(request):
     c1=request.user.id
     if request.method == 'POST':
         form = LicenceModificationForm(request.POST,use_required_attribute=False,initial={'CustomerId': c1})
@@ -201,5 +201,13 @@ def appliedLicenceModificationService(request):
         form = LicenceModificationForm(initial={'CustomerId': c1})
     context = {
         "form" : form,
+    }
+    return render(request,'customer/applyLicenceModification.html',context)
+
+def appliedLicenceModificationService(request):
+    c1 = request.user.id
+    services = ServiceApplicationOfLicenceModification.objects.filter(CustomerId_id=c1)
+    context = {
+        'services' : services,
     }
     return render(request,'customer/appliedLicenceModificationService.html',context)

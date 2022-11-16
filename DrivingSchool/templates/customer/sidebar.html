@@ -41,17 +41,17 @@
         <li>
           <a href="{% url 'customer-applyNewLicence' %}" class="nav-link px-3">
             <span class="me-2"></span>
-            <span>Apply New licence</span>
+            <span>Apply New licence / Badge</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="#" class="nav-link px-3">
             <span class="me-2"></span>
             <span>Apply Badge</span>
           </a>
-        </li>
+        </li> -->
         <li>
-          <a href="#" class="nav-link px-3">
+          <a href="{% url 'customer-applyLicenceModificationService' %}" class="nav-link px-3">
             <span class="me-2"></span>
             <span>licence modification</span>
           </a>
@@ -64,7 +64,7 @@
         </li>
         <li>
           <a href="{% url 'customer-appliedService' %}" class="nav-link px-3">
-            <span>Applied new licence Status</span>
+            <span>Applied new licence / Badge Status</span>
           </a>
         </li>
         <li>
@@ -77,6 +77,11 @@
             <span>Licence modification Status</span>
           </a>
         </li>
+        <!-- <li>
+          <a href="" class="nav-link px-3">
+            <span>Applied Badge Status</span>
+          </a>
+        </li> -->
         <!-- <li>
           <a href="{% url 'customer-DriningPaymentHistory' %}" class="nav-link px-3"> change accordng to service
             <span>Payment history</span>

@@ -15,5 +15,10 @@ urlpatterns = [
     path('createUser',views.userRegister,name = 'staff-userRegister'),
     path('userRegisterd',views.userRegistered,name= 'staff-userRegistered'),
     path('updateLearningTestDates/<int:pk>',views.updateLearningTestDates,name="staff-updateLearningTestDates"),
+    path('manageAppliedRcServices',views.ManageAppliedRCServices,name='staff-ManageAppliedRCServices'),
+    path('updateRCservices/<int:pk>',views.updateRCModificationservices,name='staff-updateRCservices'),
+    path('manageAppliedLicenceServices',views.ManageAppliedLicenceServices,name='staff-ManageAppliedLicenceServices'),
+    path('updateLicenceservices/<int:pk>',views.updateLicenceModificationservices,name='staff-updateLicenceservices'),
+    
 
 ]
